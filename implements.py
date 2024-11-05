@@ -36,7 +36,6 @@ class Block(Basic):
     def collide(self):
         # ============================================
         # TODO: Implement an event when block collides with a ball
-        # block modify
         pass
 
 
@@ -69,7 +68,6 @@ class Ball(Basic):
     def collide_block(self, blocks: list):
         # ============================================
         # TODO: Implement an event when the ball hits a block
-        # implement collide_block
         pass
 
     def collide_paddle(self, paddle: Paddle) -> None:
@@ -79,11 +77,9 @@ class Ball(Basic):
     def hit_wall(self):
         # ============================================
         # TODO: Implement a service that bounces off when the ball hits the wall
-        #modify
         pass
     
     def alive(self):
         # ============================================
         # TODO: Implement a service that returns whether the ball is alive or not
-        #modify
         pass
