@@ -36,7 +36,6 @@ class Block(Basic):
     def collide(self):
         # ============================================
         # TODO: Implement an event when block collides with a ball
-        # block modify
         pass
 
 
