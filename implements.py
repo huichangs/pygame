@@ -79,7 +79,6 @@ class Ball(Basic):
     def hit_wall(self):
         # ============================================
         # TODO: Implement a service that bounces off when the ball hits the wall
-        #modify
         pass
     
     def alive(self):
