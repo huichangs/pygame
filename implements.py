@@ -36,7 +36,9 @@ class Block(Basic):
     def collide(self):
         # ============================================
         # TODO: Implement an event when block collides with a ball
-        pass
+        self.rect.width = 0
+        self.rect.height = 0
+        self.alive = False
 
 
 class Paddle(Basic):
@@ -68,7 +70,22 @@ class Ball(Basic):
     def collide_block(self, blocks: list):
         # ============================================
         # TODO: Implement an event when the ball hits a block
-        pass
+        blocks_to_remove = []  # List to store blocks to be removed
+
+        for block in blocks:
+            if self.rect.colliderect(block.rect):
+                # 충돌 방향 결정
+                if abs(self.rect.right - block.rect.left) < self.speed or abs(self.rect.left - block.rect.right) < self.speed:
+                    self.dir = 180 - self.dir  # 좌우 충돌
+                else:
+                    self.dir = -self.dir  # 상하 충돌
+
+                block.collide()
+                blocks_to_remove.append(block)  # Add block to the remove list
+
+        # Remove collided blocks from the blocks list
+        for block in blocks_to_remove:
+            blocks.remove(block)
 
     def collide_paddle(self, paddle: Paddle) -> None:
         if self.rect.colliderect(paddle.rect):
@@ -77,9 +94,17 @@ class Ball(Basic):
     def hit_wall(self):
         # ============================================
         # TODO: Implement a service that bounces off when the ball hits the wall
-        pass
+        if self.rect.left < 0 or self.rect.right > config.display_dimension[0]:
+            self.dir = 180 - self.dir
+        
+        # 상단 벽 충돌
+        if self.rect.top <= 0:
+            self.dir = -self.dir
     
     def alive(self):
         # ============================================
         # TODO: Implement a service that returns whether the ball is alive or not
-        pass
+        if self.center[1] > config.display_dimension[1]:
+            return False
+        else:
+            return True
