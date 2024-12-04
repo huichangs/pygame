@@ -4,7 +4,7 @@ num_blocks = (14, 3)
 # Size of margin
 margin = (20, 40)
 # Size of block
-block_size = (30, 30)
+block_size = (20, 20)
 # Spacing between blocks
 spacing = (10, 10)
 score_pos = (10, 10)
